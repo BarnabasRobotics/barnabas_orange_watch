@@ -3,8 +3,8 @@ an inexpensive, maker-friendly wristwatch with WiFi, Bluetooth, and sensors
 
 ## Overview:
 The company M5Stack has an amazing device called the M5StickC.  For $10 you can buy a small orange rectangle which has a rechargable LiIon cell, ESP32 processor with WiFi and Bluetooth, Real Time Clock, Motion Sensor, Microphone, and beautiful 160x80 pixel color TFT display.  For $16 you get the main unit plus a watch band, mounting bases, speaker with amplifier, and digital compass, humidity, pressure (altitude) and temperature.
-https://m5stack.com/collections/m5-core/products/m5stickc-development-kit-with-hat
-https://m5stack.com/collections/m5-core/products/stick-c
+* https://m5stack.com/collections/m5-core/products/m5stickc-development-kit-with-hat
+* https://m5stack.com/collections/m5-core/products/stick-c
 
 
 ## Getting started:
@@ -12,13 +12,13 @@ Install the Arduino IDE on Windows, MacOS, or Linux.  In File > Preferences, add
 
 In Tools > Board > Boards Manager, search for esp32 by Expressif Systems, and install it, or update it to the latest version.
 
-In Sketch > Include Libraries > Manage Libraries, add the following libraries, and if Arduino prompts, allow them to install the required dependencies as well.
-
+In Sketch > Include Libraries > Manage Libraries, add the following library:
 * M5StickC library from M5StickC
 
 Plug the device in via a USB-C cable.
 
 Select Tools > Board > M5Stick-C
+
 Select Tools > Port > (the correct virtual serial port of your M5StickC device.  might be the last one on the list.)
 
 Download and open the sketch barnabas_orange_watch.ino, and hit the Upload button on the upper right of the Arduino IDE (a circle with a right facting arrow.)
