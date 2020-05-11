@@ -20,6 +20,10 @@
 // * analog and display with 80 pixel diameter analog clock, plus battery meter, plus
 //    digital clock.
 
+//
+// bugs to fix:
+//
+//  * code to print black 8 to keep space when hours < 10 in both clock screens
 
 //
 // potential future improvements:
@@ -30,7 +34,7 @@
 // * beep on hour?
 // * speak time? (these two would need the Speaker module plugged in)
 // * magnometer in ENV sensor -> analog/digital compass
-// * use RTC to sleep/wake CPU while OLED remains active?
+// * use RTC to sleep/wake CPU while Display remains active?
 // * stay awake when plugged into USB or power
 // * fade out display at power off
 // * set time via NTP over WiFi?
@@ -440,10 +444,7 @@ void analog_and_digital()
  // 1:30 the hour hand would still point straight at 1 o'clock, not
  // halfway between 1 o'clock and 2 o'clock as it would on a real analog clock.
 
-
- 
  hours = RTC_TimeStruct.Hours + (RTC_TimeStruct.Minutes / 60.0);
-
 
  //
  // display digital hours and minutes
@@ -451,7 +452,13 @@ void analog_and_digital()
  {
   hours = hours - 12.0;
  }
- M5.Lcd.setCursor(100, 55, 4);
+ M5.Lcd.setCursor(80, 55, 4);
+
+  if (hours < 10)
+ {
+  M5.Lcd.setTextColor(BLACK, BLACK);
+  M5.Lcd.print("8");
+ }
  
  M5.Lcd.setTextColor(RED, BLACK);
  M5.Lcd.printf("%d", (int) hours);
@@ -608,7 +615,7 @@ void draw_battery_icon(uint8_t x, uint8_t y, uint8_t width, uint8_t height, uint
 }
 
 /*
-* I had the hardest time finding the commands for drawing to the OLED display
+* I had the hardest time finding the commands for drawing to the TFT display
 * on the M5StickC. The best reference seems to be
 * https://github.com/m5stack/M5StickC/blob/master/src/M5StickC.h
 *    
