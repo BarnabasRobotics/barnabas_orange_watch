@@ -13,7 +13,7 @@
 // features:
 //
 // * code to set the Real Time Clock (RTC) chip once
-//  * multiple screens of data, use the big M5 button to cycle between them, thewatch
+//  * multiple screens of data, use the big M5 button to cycle between them, the watch
 //    saves your preference for the next time it wakes up
 // * digital display with colorful 7-segment hours and minutes, and somewhat animated
 //  seconds display (text 0-59 moves across the bottom of the display.)
@@ -24,6 +24,7 @@
 //
 // potential future improvements:
 //
+// * add battery level icon to digital screen
 // * would lowering the CPU clock save much power?
 //  see https://github.com/tracestick/firmware_alpha/blob/master/mods/boards.diff.txt
 // * beep on hour?
@@ -96,8 +97,8 @@
 // 80 or 95 mAh LiIon cell "battery"
 // USB C with programming/debugging serial port
 
-const int sleep_time = 0; // watch goes to sleep after this many seconds
-             // or zero to stay awake
+const int SLEEP_TIME = 15; // watch goes to sleep after this many seconds
+                          // or zero to stay awake
 
 const bool twelve_hour_time = 1; // set to 1 for "normal" 1-12 hours time
                 // set to 0 for 0-23 hundred hours "military" time
@@ -239,7 +240,7 @@ void loop() {
  }
 
  
- if (currentMillis - wake_time_millis >= sleep_time * 1000)
+ if (currentMillis - wake_time_millis >= SLEEP_TIME * 1000)
  {
   // save the active screen number to battery backed RAM in the AXP PMIC
   pointer_to_uint8_in_buffer[4] = screen;
@@ -247,7 +248,7 @@ void loop() {
   // write this into AXP "data buffer" battery backed RAM
   M5.Axp.Write6BytesStorage(pointer_to_axp_data_buffer);
 
-  if (sleep_time > 0)
+  if (SLEEP_TIME > 0)
   { 
    M5.Axp.DeepSleep(0);
    // the M5 button on the face can wake the device
@@ -301,7 +302,7 @@ void buttons_code() {
   screen = 0;
  }
 
- // this might be unnecessary, now that the device goes to deep sleep after sleep_time seconds
+ // this might be unnecessary, now that the device goes to deep sleep after SLEEP_TIME seconds
  //
  // control the LCD (ON/OFF)
  if (M5.BtnB.wasPressed()) 
