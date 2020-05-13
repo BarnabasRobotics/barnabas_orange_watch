@@ -32,3 +32,9 @@ To set the time, find the section of the code, maybe around line 170, which says
 change `if(0)` to `if(1)`, and set the date and time, and upload the sketch.   Verify it worked, and then change the 1 back to a 0 so you don't break the time in future uploads.  Unless you let the battery go completely flat, you shouldn't have to set it again, thanks to the Real Time Clock (RTC) that is integrated into the device.
 
 You can also play with the example sketches from https://github.com/m5stack/M5StickC/tree/master/examples
+
+# power
+The power button is the one on the side nearest the big M5 button on the face.  
+    Power on ：Long press power button for 2 seconds
+    Power on ：Short press power button for 6 seconds
+
