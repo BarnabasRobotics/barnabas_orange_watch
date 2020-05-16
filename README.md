@@ -1,6 +1,8 @@
 # barnabas_orange_watch
 an inexpensive, maker-friendly wristwatch with WiFi, Bluetooth, and sensors
 
+![](./images/m5stickC_watch_analog_and_digital_screen.jpg "M5StickC with Analog and Digital watch face.")
+
 ## Overview:
 The company M5Stack has an amazing device called the M5StickC.  For $10 you can buy a small orange rectangle which has a rechargable LiIon cell, ESP32 processor with WiFi and Bluetooth, Real Time Clock, Motion Sensor, Microphone, and beautiful 160x80 pixel color TFT display.  For $16 you get the main unit plus a watch band, mounting bases, speaker with amplifier, and digital compass, humidity, pressure (altitude) and temperature.
 * https://m5stack.com/collections/m5-core/products/m5stickc-development-kit-with-hat
